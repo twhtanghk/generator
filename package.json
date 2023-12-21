@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "name": "generator",
+  "version": "0.0.1",
+  "description": "apply function to elements of generator",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "node -r coffeescript/register -r esm test/1-map.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twhtanghk/generator.git"
+  },
+  "author": "twhtanghk@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twhtanghk/generator/issues"
+  },
+  "homepage": "https://github.com/twhtanghk/generator#readme",
+  "dependencies": {
+    "coffeescript": "^2.7.0",
+    "esm": "^3.2.25"
+  }
+}

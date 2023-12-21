@@ -1,2 +1,2 @@
 # generator
-apply functions to generator
+apply functions to elements of generator
