@@ -1,3 +1,5 @@
+import {uniqBy} from 'lodash'
+
 generator =
   map: (g, f) ->
     (...args) ->
@@ -26,18 +28,15 @@ generator =
         if chunk.length > n
           chunk.shift()
         yield {i, chunk}
-  # look back n elements from generator
-  # yield i th element and last n elements without duplicate index field
-  lookBackUniq: (g, field='time', n=5) ->
+  # look back from generator
+  # yield i th element and filter those duplicate elements
+  uniqBy: (g, iteratee='time') ->
     (...args) ->
-      chunk = []
+      last = null
       for await i from g ...args
-        last = chunk.pop()
-        if last? and last[field] != i[field]
-          chunk.push last
-        chunk.push i
-        if chunk.length > n
-          chunk.shift()
-        yield {i, chunk}
+        ret = uniqBy [i, last], iteratee 
+        if last? and ret.length == 2
+          yield last
+        last = i
 
 export default generator
