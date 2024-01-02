@@ -1,4 +1,4 @@
-{lookBack} = require('../index').default
+{lookBack, uniqBy} = require('../index').default
 
 g = (min, max) ->
   i = min
@@ -9,5 +9,5 @@ f = (i) ->
   i % 2 == 1
 
 do ->
-  for await i from lookBack(g, 5) 100, 110
-    console.log i
+  for await {i, chunk} from lookBack(uniqBy(g), 5) 100, 4000
+    console.log i, chunk
