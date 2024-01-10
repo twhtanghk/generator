@@ -30,7 +30,7 @@ generator =
         yield {i, chunk}
   # look back from generator
   # yield i th element and filter those duplicate elements
-  uniqBy: (g, iteratee='time') ->
+  uniqBy: (g, iteratee='timestamp') ->
     (...args) ->
       last = null
       for await i from g ...args
